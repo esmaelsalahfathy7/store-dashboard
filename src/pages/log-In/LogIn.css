@@ -1,0 +1,28 @@
+.log-in {
+  max-width: 100%;
+  width: 500px;
+}
+
+.log-in .content h1 {
+  color: rgb(70 72 212 / 1);
+}
+.log-in .content i,
+.log-in button[type="submit"] {
+  background-color: rgb(70 72 212 / 1);
+  padding: 7px 10px;
+}
+
+.log-in .input-icon i {
+  left: 12px;
+  color: #999;
+}
+
+.log-in .input-icon input {
+  padding: 15px; /* علشان تسيب مكان للأيقونة */
+  padding-left: 40px;
+}
+
+.log-in .input-icon input:focus {
+  border-color: #5b5bd6 !important;
+  box-shadow: 0 0 0 2px rgba(91, 91, 214, 0.2) !important;
+}

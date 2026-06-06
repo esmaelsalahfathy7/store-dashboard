@@ -1,0 +1,9 @@
+.alert {
+  opacity: 0 !important;
+  transition: display 0.5s ease-in-out;
+}
+
+.alert.show {
+  opacity: 1 !important;
+  display: block !important;
+}

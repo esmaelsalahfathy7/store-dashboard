@@ -1,29 +1,26 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
-import Layout from "./pages/Layout";
-import Products from "./pages/Products";
-import Sales from "./pages/Sales";
-import Other from "./pages/Other";
+import { BrowserRouter } from "react-router-dom";
+import App from "./App";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import AuthProvider from "./Contexts/AuthContext";
+import CustomAlertProvider from "./hooks/CustomAlertContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="products" element={<Products />} />
-          <Route path="sales" element={<Sales />} />
-          <Route path="other" element={<Other />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <CustomAlertProvider>
+      <BrowserRouter>
+        <AuthProvider>
+          <App />
+        </AuthProvider>
+      </BrowserRouter>
+    </CustomAlertProvider>
   </React.StrictMode>,
 );
 
