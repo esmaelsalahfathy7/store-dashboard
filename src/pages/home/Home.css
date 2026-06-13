@@ -1,0 +1,22 @@
+main .card .card-title i {
+  width: 30px;
+  height: 30px;
+  background-color: var(--primary-opacity-color);
+  color: var(--primary-color);
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+main .card:hover i {
+  transform: scale(1.1);
+}
+
+main .col:last-child .card {
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+main .col:last-child .card .card-title i {
+  background-color: var(--primary-color);
+  color: white;
+}

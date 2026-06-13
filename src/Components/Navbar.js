@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "../Contexts/AuthContext";
+import { useAuth } from "../hooks/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { useShowAlert } from "../hooks/CustomAlertContext";
+import SideBar from "./SideBar";
 
 export default function Navbar() {
+  const [showSideBar, setShowSideBar] = useState(false);
   const navigate = useNavigate();
   const { setAlert } = useShowAlert();
   const { LogOut } = useAuth();
+
+  const handleShowSideBar = () => {
+    console.log("dsad");
+
+    setShowSideBar(!showSideBar);
+  };
+
   const handleOnClick = (e) => {
     e.preventDefault();
     localStorage.removeItem("user");
@@ -17,15 +26,16 @@ export default function Navbar() {
   };
 
   return (
-    <nav className={`navbar sticky-top py-3 bg-white `}>
+    <nav
+      className={`navbar sticky-top py-3 bg-white `}
+      
+    >
       <div className="container-fluid flex-nowrap">
         <span className="fs-5 fw-bold">
           <button
             className="btn me-1 d-md-none"
             type="button"
-            data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasExample"
-            aria-controls="offcanvasExample"
+            onClick={handleShowSideBar}
           >
             <i className="bi bi-list text-black fs-3"></i>
           </button>
@@ -89,6 +99,9 @@ export default function Navbar() {
           </div>
         </div>
       </div>
+      {showSideBar && (
+        <SideBar isMobile={true} handleShowSideBar={handleShowSideBar} />
+      )}
     </nav>
   );
 }

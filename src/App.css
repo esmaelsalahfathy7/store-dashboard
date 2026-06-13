@@ -1,6 +1,13 @@
 :root {
   --primary-color: #4648d4;
+  --primary-opacity-color: #4648d445;
   --secondary-color: #f5f5f5;
   --text-color: #333;
   --background-color: #fff;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
 }

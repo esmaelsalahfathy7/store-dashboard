@@ -7,8 +7,9 @@ import App from "./App";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import AuthProvider from "./Contexts/AuthContext";
+import AuthProvider from "./hooks/AuthContext";
 import CustomAlertProvider from "./hooks/CustomAlertContext";
+import AddProduct from "./Components/AddProduct";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -18,6 +19,7 @@ root.render(
       <HashRouter>
         <AuthProvider>
           <App />
+          <AddProduct />
         </AuthProvider>
       </HashRouter>
     </CustomAlertProvider>

@@ -14,9 +14,9 @@ export default function CustomAlertProvider({ children }) {
   }
 
   return (
-    <ShowAlertContext.Provider value={{ showAlert, setAlert }}>
+    <ShowAlertContext.Provider value={{ setAlert }}>
       <div
-        className={`alert alert-primary position-fixed bottom-0 end-0 opacity-0 d-none ${showAlert.show ? "show" : ""}`}
+        className={`alert alert-success position-fixed bottom-0 end-0 opacity-0 d-none ${showAlert.show ? "show" : ""}`}
         role="alert"
       >
         {showAlert.message}

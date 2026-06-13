@@ -2,7 +2,7 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 
 //Pages
-import Layout from "./Layout";
+import Layout from "./pages/Layout";
 import Home from "./pages/home/Home";
 import Products from "./pages/products/Products";
 import Sales from "./pages/sales/Sales";
@@ -10,6 +10,7 @@ import LogIn from "./pages/log-In/LogIn";
 import ProtectedRoute from "./Components/ProtectedRoute";
 import Settings from "./pages/settings/Settings";
 import Financials from "./pages/financial/Financials";
+import ProductsPage from "./Components/ProductsContent";
 function App() {
   return (
     <>
@@ -25,6 +26,9 @@ function App() {
         >
           <Route index element={<Home />} />
           <Route path="products" element={<Products />} />
+          {/* <Route path="products" element={<Products />}>
+            <Route path=":page" element={<ProductsPage />} />
+          </Route> */}
           <Route path="sales" element={<Sales />} />
           <Route path="financials" element={<Financials />} />
           <Route path="settings" element={<Settings />} />

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import "./LogIn.css";
-import { useAuth } from "../../Contexts/AuthContext";
+import { useAuth } from "../../hooks/AuthContext";
 
 export default function LogIn() {
   const [user, setUser] = useState({

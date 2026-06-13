@@ -1,30 +1,28 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { useAuth } from "./Contexts/AuthContext";
-import { useShowAlert } from "./hooks/CustomAlertContext";
+import { useAuth } from "../hooks/AuthContext";
+import { useShowAlert } from "../hooks/CustomAlertContext";
 
-export default function SideBar({ isMobile = false }) {
+export default function SideBar({ isMobile = false, handleShowSideBar }) {
   if (!isMobile) {
     return <CustomSideBar />;
-  } else if (isMobile) {
-    return (
-      <>
-        <div
-          className="offcanvas offcanvas-start "
-          tabIndex="-1"
-          id="offcanvasExample"
-          aria-labelledby="offcanvasExampleLabel"
-        >
-          <div className="offcanvas-body p-0">
-            <CustomSideBar isMobile />
-          </div>
-        </div>
-      </>
-    );
   }
+  document.documentElement.style.overflow = "hidden";
+  return (
+    <>
+      <div
+        className="offcanvas offcanvas-start show bg-dark w-100 "
+        tabIndex="-1"
+      >
+        <div className="offcanvas-body p-0">
+          <CustomSideBar isMobile handleShowSideBar={handleShowSideBar} />
+        </div>
+      </div>
+    </>
+  );
 }
 
-function CustomSideBar({ isMobile }) {
+function CustomSideBar({ isMobile, handleShowSideBar }) {
   const { LogOut } = useAuth();
   const { setAlert } = useShowAlert();
   const location = useLocation();
@@ -32,17 +30,18 @@ function CustomSideBar({ isMobile }) {
   let currentPage = location.pathname;
 
   const handleClick = () => {
-    document.getElementById("clseSideBar").click();
+    handleShowSideBar();
+    document.documentElement.style.overflow = "auto";
   };
 
   function handleLogOut() {
     LogOut();
     setAlert("Logged out successfully!");
   }
+
   return (
     <aside
       className={`w-100 h-100 bg-light position-sticky top-0 start-0 flex-column justify-content-between p-3 d-flex`}
-      
     >
       <div className="d-flex flex-column gap-3 w-100">
         <div className="logo d-flex m-3 gap-2">
@@ -56,10 +55,11 @@ function CustomSideBar({ isMobile }) {
           {isMobile && (
             <button
               type="button"
-              id="clseSideBar"
               className="btn-close ms-auto"
-              data-bs-dismiss="offcanvas"
-              aria-label="Close"
+              onClick={() => {
+                handleShowSideBar();
+                document.documentElement.style.overflow = "auto";
+              }}
             ></button>
           )}
         </div>
@@ -118,13 +118,7 @@ function CustomSideBar({ isMobile }) {
       </div>
       <div className="w-100">
         <hr />
-        <button
-          type="button"
-          className="add-product btn btn-primary mb-2 w-100 rounded-0 d-flex align-items-center justify-content-center gap-2"
-        >
-          <i className="d-flex justify-content-center align-items-center fs-5 bi bi-plus"></i>
-          Add Product
-        </button>
+
         <button
           className="logout btn btn-outline-danger text-start border-0 w-100 rounded-5 d-flex align-items-center gap-2 "
           onClick={handleLogOut}
