@@ -1,25 +1,47 @@
-import React from "react";
-import { useShowAlert } from "../hooks/CustomAlertContext";
-import { useData } from "../Contexts/ProductsData";
+import React, { useState } from "react";
+import { useShowAlert } from "../../../Contexts/CustomAlertContext";
 
-export default function AddProduct({ show, handleShowAddProduct }) {
-  const data = useData();
-
+export default function AddUpdateProduct({
+  handleCloseModal,
+  selectedProduct,
+  productsInfo,
+}) {
+  const [newProductData, setNewProductData] = useState(selectedProduct);
   const { setAlert } = useShowAlert();
+  const { addProduct, updateProduct } = productsInfo;
+
   const handleAddProdcut = () => {
-    console.log("Product Added");
-    handleShowAddProduct();
+    console.log(newProductData);
+    addProduct(newProductData);
+    handleCloseModal();
     setAlert("Product Added Successfully");
-    data.dispatch({ type: "add" });
   };
-  if (!show) return null;
+
+  const handleUpdateProduct = () => {
+    handleCloseModal();
+    setAlert("Product Updated Successfully");
+    updateProduct(newProductData);
+  };
+
+  const handleInputChange = (e) => {
+    const { value, name } = e.currentTarget;
+    setNewProductData({ ...newProductData, [name]: value });
+  };
+
+  const isAdd = !selectedProduct.id;
+  console.log(isAdd);
+
+  const dsiabled =
+    newProductData.category === "" ||
+    newProductData.id === "" ||
+    newProductData.name === "" ||
+    +newProductData.price <= 0 ||
+    +newProductData.stock <= 0;
   return (
     <>
       <div
         className="modal fade show d-flex bg-dark bg-opacity-50 justify-content-center m-0"
-        onClick={(e) => {
-          handleShowAddProduct();
-        }}
+        onClick={handleCloseModal}
       >
         <div className=" modal-dialog-centered" style={{ width: "500px" }}>
           <div
@@ -40,11 +62,14 @@ export default function AddProduct({ show, handleShowAddProduct }) {
                     Product Name
                   </label>
                   <input
-                    type="password"
+                    type="text"
                     id="productName"
+                    name="name"
                     className="form-control"
                     aria-describedby="productName"
                     placeholder={`e.g Smart LED TV 55"`}
+                    value={newProductData.name}
+                    onChange={handleInputChange}
                   />
                 </div>
               </div>
@@ -56,16 +81,24 @@ export default function AddProduct({ show, handleShowAddProduct }) {
                   <input
                     type="text"
                     id="productCode"
+                    name="id"
                     className="form-control"
                     aria-describedby="productCode"
                     placeholder={`e.g A4351`}
+                    value={newProductData.id}
+                    onChange={handleInputChange}
                   />
                 </div>
                 <div className="col">
                   <label htmlFor="category" className="form-label">
-                    Product Code
+                    Product Category
                   </label>
-                  <select id="category" className="form-select">
+                  <select
+                    id="category"
+                    className="form-select"
+                    name="category"
+                    onChange={handleInputChange}
+                  >
                     <option value="0">Displays</option>
                     <option value="1">Climate</option>
                     <option value="2">Appliances</option>
@@ -81,9 +114,12 @@ export default function AddProduct({ show, handleShowAddProduct }) {
                   <input
                     type="number"
                     id="unitPrice"
+                    name="price"
                     className="form-control"
                     aria-describedby="unitPrice"
                     placeholder={`0.00`}
+                    value={newProductData.price}
+                    onChange={handleInputChange}
                   />
                 </div>
                 <div className="col">
@@ -93,9 +129,12 @@ export default function AddProduct({ show, handleShowAddProduct }) {
                   <input
                     type="number"
                     id="productStock"
+                    name="stock"
                     className="form-control"
                     aria-describedby="productStock"
                     placeholder={`0`}
+                    value={newProductData.stock}
+                    onChange={handleInputChange}
                   />
                 </div>
               </div>
@@ -104,18 +143,17 @@ export default function AddProduct({ show, handleShowAddProduct }) {
               <button
                 type="button"
                 className="btn btn-secondary"
-                onClick={() => {
-                  handleShowAddProduct();
-                }}
+                onClick={handleCloseModal}
               >
                 Cancel
               </button>
               <button
                 type="button"
                 className="btn btn-primary"
-                onClick={handleAddProdcut}
+                onClick={!!isAdd ? handleAddProdcut : handleUpdateProduct}
+                disabled={dsiabled}
               >
-                Add Product
+                {!!isAdd ? "Add Product" : "Save Changes"}
               </button>
             </div>
           </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { useAuth } from "../hooks/AuthContext";
-import { useShowAlert } from "../hooks/CustomAlertContext";
+import { useAuth } from "../Contexts/AuthContext";
+import { useShowAlert } from "../Contexts/CustomAlertContext";
 
 export default function SideBar({ isMobile = false, handleShowSideBar }) {
   if (!isMobile) {
@@ -45,7 +45,10 @@ function CustomSideBar({ isMobile, handleShowSideBar }) {
     >
       <div className="d-flex flex-column gap-3 w-100">
         <div className="logo d-flex m-3 gap-2">
-          <span className="letter badge bg-primary fs-4 text-white rounded-circle ">
+          <span
+            className="letter badge custom-bg-primary fs-4 text-white rounded-3 custom-flex-center"
+            style={{ width: "40px", height: "40px" }}
+          >
             V
           </span>
           <div>

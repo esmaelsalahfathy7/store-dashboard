@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineArrowRight } from "react-icons/ai";
-import "./LogIn.css";
-import { useAuth } from "../../hooks/AuthContext";
+import "./LogInPage.css";
+import { useAuth } from "../../Contexts/AuthContext";
 
-export default function LogIn() {
+export default function LogInPage() {
   const [user, setUser] = useState({
     email: "ismaelsalah56@gmail.com",
     password: "123321123",

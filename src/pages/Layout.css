@@ -8,7 +8,6 @@
 }
 
 .layout aside .logo span {
-  background: var(--primary-color) !important;
   line-height: 1.2;
 }
 
@@ -34,7 +33,6 @@
 }
 
 .layout aside .add-product {
-  background: var(--primary-color) !important;
   font-size: 14px !important;
 }
 
@@ -49,10 +47,6 @@
 
 .layout .links .btn:hover {
   background: rgb(230, 231, 231);
-}
-
-.layout nav span {
-  color: var(--primary-color);
 }
 
 .layout .drop-down.show + .dropdown-menu {

@@ -1,7 +1,6 @@
 import React from "react";
-import "./Home.css";
-import Card from "../../Components/Card.js";
-export default function Home() {
+import HomeCard from "./Components/HomeCard";
+export default function HomePage() {
   return (
     <div className={"home"}>
       <div className="header">
@@ -9,7 +8,7 @@ export default function Home() {
         <p>Welcome back. Here's your business summary.</p>
       </div>
       <div className="cards row p-1 row-cols-1 row-cols-sm-2 row-cols-lg-5 mb-3">
-        <Card
+        <HomeCard
           card={{
             title: "Total Products",
             value: "1240",
@@ -18,8 +17,8 @@ export default function Home() {
           }}
         >
           <i className="bi bi-archive d-flex justify-content-center align-items-center rounded-circle text-primary bg-opacity-25"></i>
-        </Card>
-        <Card
+        </HomeCard>
+        <HomeCard
           card={{
             title: "Total Sales",
             value: "859",
@@ -28,8 +27,8 @@ export default function Home() {
           }}
         >
           <i className="bi bi-cart3  d-flex justify-content-center align-items-center rounded-circle text-primary bg-opacity-25"></i>
-        </Card>
-        <Card
+        </HomeCard>
+        <HomeCard
           card={{
             title: "Revenue",
             value: "$42,500",
@@ -41,8 +40,8 @@ export default function Home() {
             className="bi bi-cash-stack bg-success  d-flex justify-content-center align-items-center rounded-circle text-success bg-opacity-25"
             style={{ width: "30px", height: "30px" }}
           ></i>
-        </Card>
-        <Card
+        </HomeCard>
+        <HomeCard
           card={{
             title: "Expenses",
             value: "$12,300",
@@ -54,8 +53,8 @@ export default function Home() {
             className="bi bi-currency-dollar bg-danger d-flex justify-content-center align-items-center rounded-circle text-danger bg-opacity-25"
             style={{ width: "30px", height: "30px" }}
           ></i>
-        </Card>
-        <Card
+        </HomeCard>
+        <HomeCard
           card={{
             title: "Net Profit",
             value: "$30,200",
@@ -67,7 +66,7 @@ export default function Home() {
             className="bi bi-bank  d-flex justify-content-center align-items-center rounded-circle"
             style={{ width: "30px", height: "30px" }}
           ></i>
-        </Card>
+        </HomeCard>
       </div>
       <div className="graphs"></div>
     </div>

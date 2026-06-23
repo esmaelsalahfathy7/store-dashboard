@@ -1,0 +1,23 @@
+.modal.fade {
+  transition: backdrop-filter 0s ease-in-out 0.2s;
+  background-color: transparent;
+}
+
+.modal.fade.show {
+  background-color: rgba(0, 0, 0, 0.4) !important;
+  backdrop-filter: blur(3px);
+
+  justify-content: center;
+  align-items: center;
+}
+
+.modal.fade .modal-dialog {
+  transform: scale(0.8);
+  transition: all 0.3s;
+  width: 600px;
+  max-width: 100% !important;
+}
+
+.modal.fade.show .modal-dialog {
+  transform: scale(1);
+}

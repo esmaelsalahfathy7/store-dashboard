@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Card({ card, children }) {
+export default function HomeCard({ card, children }) {
   return (
     <div className="col g-3 g-lg-2">
       <div className="card">

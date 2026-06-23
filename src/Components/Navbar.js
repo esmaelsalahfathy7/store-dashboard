@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "../hooks/AuthContext";
+import { useAuth } from "../Contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
-import { useShowAlert } from "../hooks/CustomAlertContext";
+import { useShowAlert } from "../Contexts/CustomAlertContext";
 import SideBar from "./SideBar";
 
 export default function Navbar() {
@@ -28,7 +28,7 @@ export default function Navbar() {
   return (
     <nav
       className={`navbar sticky-top py-3 bg-white `}
-      
+      style={{ height: "75px" }}
     >
       <div className="container-fluid flex-nowrap">
         <span className="fs-5 fw-bold">

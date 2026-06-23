@@ -1,0 +1,83 @@
+/* Parent Of Table */
+.sales-page > div {
+  border-color: #c7c4d7 !important;
+}
+
+.sales-page .header {
+  border-bottom: 1px solid #c7c4d7;
+}
+
+.sales-page .header .search-bar {
+  border-color: #c7c4d7 !important;
+  color: #767586;
+  transition: box-shadow 0.1s;
+}
+
+.sales-page .header .search-bar:focus-within {
+  box-shadow: 0px 0px 3px 1px #1c2a87;
+}
+
+.sales-page .header > .btns button {
+  color: #464554;
+  border-color: #c7c4d7;
+  transition: 0.2s;
+}
+
+.sales-page .header > .btns button:hover {
+  background-color: #f5f2fe !important;
+}
+
+/* Table head Row */
+.sales-page table thead tr {
+  height: 50px;
+}
+
+/* Table Head Cell */
+.sales-page table thead th {
+  color: #464554 !important;
+  font-weight: 500 !important;
+  font-size: 12px !important;
+  background-color: #fcf8ff !important;
+  border-bottom: 1px solid #c7c4d7;
+}
+
+.sales-page table tbody td {
+  white-space: nowrap;
+  color: #1b1b23 !important;
+  font-size: 14px;
+  /* transition: .2; */
+}
+
+.sales-page table tbody td span {
+  font-size: 12px;
+}
+
+.sales-page table tbody tr td:last-child {
+  opacity: 0;
+}
+
+.sales-page table tbody tr:hover td:last-child {
+  opacity: 1 !important;
+}
+
+/* Add New Product And Filter */
+.head .btns button {
+  letter-spacing: 1.7px !important;
+  font-size: 13px !important;
+}
+
+.head .btns i {
+  font-size: 16px !important;
+}
+
+/* Pagination Style */
+
+.filter nav .custome:hover span {
+  background-color: var(--primary-opacity-color) !important;
+}
+
+.filter nav .custome span.active {
+  background-color: var(--primary-color) !important;
+  color: white !important;
+  height: 100%;
+}

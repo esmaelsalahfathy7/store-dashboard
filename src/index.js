@@ -3,13 +3,14 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import { HashRouter } from "react-router-dom";
-import App from "./App";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import AuthProvider from "./hooks/AuthContext";
-import CustomAlertProvider from "./hooks/CustomAlertContext";
-import AddProduct from "./Components/AddProduct";
+import AuthProvider from "./Contexts/AuthContext";
+import App from "./App";
+
+import CustomAlertProvider from "./Contexts/CustomAlertContext";
+import SalesOrdersProvider from "./pages/sales/Contexts/SalesOrdersContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -18,8 +19,9 @@ root.render(
     <CustomAlertProvider>
       <HashRouter>
         <AuthProvider>
-          <App />
-          <AddProduct />
+          <SalesOrdersProvider>
+            <App />
+          </SalesOrdersProvider>
         </AuthProvider>
       </HashRouter>
     </CustomAlertProvider>

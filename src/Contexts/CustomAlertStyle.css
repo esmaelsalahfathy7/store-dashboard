@@ -6,4 +6,5 @@
 .alert.show {
   opacity: 1 !important;
   display: block !important;
+  z-index: 1020;
 }

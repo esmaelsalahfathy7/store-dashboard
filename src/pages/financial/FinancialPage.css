@@ -1,0 +1,101 @@
+.financials-page .card {
+  transition: 0.2s;
+}
+
+.financials-page .cards .card:hover {
+  background-color: #f5f2fe;
+}
+
+/* Expenses */
+.financials-page .card.expenses.increase .rate {
+  color: rgb(186 26 26 / 1);
+}
+
+.financials-page .card.expenses.decrease .rate {
+  color: rgb(22 163 74 / 1);
+}
+
+/* Revenue And Profit */
+.financials-page .card.profit.increase .card-body {
+  background: linear-gradient(to bottom, rgb(90 193 87 / 9%), transparent);
+}
+
+.financials-page .card.increase .rate,
+.financials-page .card.profit.increase .card-body {
+  color: rgb(22 163 74 / 1);
+}
+
+.financials-page .card.decrease,
+.financials-page .card.profit.decrease .card-body {
+  color: rgb(186 26 26 / 1);
+}
+
+.financials-page .card span {
+  color: #464554;
+}
+
+.financials-page .card.revenue .card-body > div i {
+  background-color: rgba(70, 72, 212, 0.17) !important;
+}
+
+/* Add Expense Component */
+.expenses-data .add-expenses .header p {
+  color: rgb(70 69 84 / 1);
+}
+.expenses-data .add-expenses label {
+  font-size: 12px;
+  color: rgb(70 69 84 / 1);
+  font-weight: 600;
+}
+
+.expenses-data .add-expenses input,
+.expenses-data .add-expenses select,
+.expenses-data .add-expenses textarea {
+  outline: none;
+  transition: 0.3s;
+  border-color: #58576338 !important;
+  padding: 10px 15px !important;
+  font-size: 14px;
+}
+
+.expenses-data .add-expenses select:focus {
+  box-shadow: none;
+}
+.expenses-data .add-expenses textarea {
+  resize: none;
+  height: 100px;
+}
+
+.expenses-data .add-expenses button:active {
+  transform: scale(0.97);
+  transition: 0.3s;
+}
+
+/* Recent Expenses Component */
+.expenses-data .all-expenses .filter button:hover {
+  background-color: rgba(65, 67, 192, 0.219) !important;
+}
+
+.expenses-data .all-expenses table th {
+  font-weight: 600;
+  font-size: 14px;
+  color: #464554;
+}
+
+.expenses-data .all-expenses table tbody tr {
+  cursor: pointer;
+}
+
+.expenses-data .all-expenses table td {
+  font-weight: 400;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.expenses-data .all-expenses table td:last-child {
+  color: rgb(70 69 84 / 1);
+}
+
+.expenses-data .all-expenses table td span {
+  font-size: 11px;
+}
