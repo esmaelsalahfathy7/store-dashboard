@@ -1,0 +1,23 @@
+.settings label,
+.settings .card .card-footer span {
+  color: rgb(70 69 84 / 1) !important;
+  font-size: 14px !important;
+  font-weight: 500;
+}
+
+.settings .card input {
+  transition: 0.3s;
+}
+
+.settings .card input:focus {
+  /* border-color: ; */
+  border-color: var(--primary-color) !important;
+  box-shadow: 0 0 0px 1px var(--primary-color) !important;
+}
+
+.settings .card .save-changes-btn:hover {
+  background-color: rgb(81, 84, 230) !important;
+}
+.settings .card .update-btn:hover {
+  background-color: rgb(202, 202, 202) !important;
+}

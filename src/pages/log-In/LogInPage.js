@@ -8,6 +8,8 @@ export default function LogInPage() {
   const [user, setUser] = useState({
     email: "ismaelsalah56@gmail.com",
     password: "123321123",
+    firstName: "Esmael",
+    lasttName: "Salah",
   });
   const { LogIn, isLogged } = useAuth();
   const navigate = useNavigate();

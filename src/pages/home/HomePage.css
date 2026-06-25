@@ -1,0 +1,37 @@
+.home .cards .card,
+.home .graphs > div >div {
+  transition: 0.2s;
+  border-color: rgb(199 196 215 / 1) !important;
+}
+
+.home .cards .card:hover {
+  background-color: rgba(240, 240, 240, 0.425);
+}
+
+.home .cards .card .card-title i {
+  width: 30px;
+  height: 30px;
+  background-color: rgba(70, 72, 212, 0.281);
+  transition: 0.1s;
+}
+
+.home .cards .net-profit .card {
+  border-color: var(--primary-color) !important;
+}
+
+.home .cards .net-profit .card .card-title,
+.home .cards .net-profit .card .value {
+  color: var(--primary-color);
+}
+.home .cards .card .card-title,
+.home .cards .card .rate {
+  font-size: 13px;
+  letter-spacing: 1px;
+  font-weight: 500;
+  color: rgb(70 69 84 / 1);
+}
+
+.home .cards .card:hover .card-title i {
+  transform: scale(1.06);
+}
+

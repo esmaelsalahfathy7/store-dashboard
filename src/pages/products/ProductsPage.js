@@ -80,7 +80,7 @@ export default function ProductsPage() {
   };
 
   return (
-    <div className="row g-3 h-100 m-0">
+    <div className="products-page row g-3 h-100 m-0">
       <div className="m-0 d-flex flex-column col-sm-12 col-md-9 gap-2">
         <div className="head d-flex justify-content-between flex-column flex-md-row ">
           <div>
@@ -107,7 +107,7 @@ export default function ProductsPage() {
           </div>
         </div>
         <div className="products-list d-flex flex-grow-1 flex-column justify-content-between">
-          <div className="table-responsive border  rounded-4 bg-white ">
+          <div className="table-responsive border content rounded-4 bg-white ">
             <table className="table table-hover m-0 align-middle ">
               <thead className="align-middle text-center">
                 <tr>

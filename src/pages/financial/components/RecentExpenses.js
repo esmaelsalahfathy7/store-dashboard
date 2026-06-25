@@ -45,7 +45,7 @@ export default function RecentExpenses() {
                     Logistics
                   </span>
                 </td>
-                <td>-$1,250.00</td>
+                <td className="cost">-$1,250.00</td>
                 <td>Oct 24, 2023</td>
               </tr>
               <tr>
@@ -58,7 +58,7 @@ export default function RecentExpenses() {
                     Logistics
                   </span>
                 </td>
-                <td>-$1,250.00</td>
+                <td className="cost">-$1,250.00</td>
                 <td>Oct 24, 2023</td>
               </tr>
               <tr>
@@ -71,7 +71,7 @@ export default function RecentExpenses() {
                     Logistics
                   </span>
                 </td>
-                <td>-$1,250.00</td>
+                <td className="cost">-$1,250.00</td>
                 <td>Oct 24, 2023</td>
               </tr>
               <tr>
@@ -84,7 +84,7 @@ export default function RecentExpenses() {
                     Logistics
                   </span>
                 </td>
-                <td>-$1,250.00</td>
+                <td className="cost">-$1,250.00</td>
                 <td>Oct 24, 2023</td>
               </tr>
               <tr>
@@ -97,7 +97,7 @@ export default function RecentExpenses() {
                     Logistics
                   </span>
                 </td>
-                <td>-$1,250.00</td>
+                <td className="cost">-$1,250.00</td>
                 <td>Oct 24, 2023</td>
               </tr>
               <tr>
@@ -110,7 +110,7 @@ export default function RecentExpenses() {
                     Logistics
                   </span>
                 </td>
-                <td>-$1,250.00</td>
+                <td className="cost">-$1,250.00</td>
                 <td>Oct 24, 2023</td>
               </tr>
             </tbody>

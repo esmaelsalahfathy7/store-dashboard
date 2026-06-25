@@ -8,9 +8,13 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import AuthProvider from "./Contexts/AuthContext";
 import App from "./App";
+import { AllCommunityModule, ModuleRegistry } from "ag-charts-community";
+
+// Enable all Community features
 
 import CustomAlertProvider from "./Contexts/CustomAlertContext";
 import SalesOrdersProvider from "./pages/sales/Contexts/SalesOrdersContext";
+ModuleRegistry.registerModules([AllCommunityModule]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 

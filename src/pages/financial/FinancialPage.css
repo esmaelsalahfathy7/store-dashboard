@@ -80,6 +80,7 @@
   font-weight: 600;
   font-size: 14px;
   color: #464554;
+  transition: 0.3s;
 }
 
 .expenses-data .all-expenses table tbody tr {
@@ -90,6 +91,11 @@
   font-weight: 400;
   font-size: 14px;
   white-space: nowrap;
+  transition: 0.3s;
+}
+
+.expenses-data .all-expenses table tr:hover td.cost {
+  color: var(--primary-color);
 }
 
 .expenses-data .all-expenses table td:last-child {
