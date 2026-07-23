@@ -1,26 +1,44 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useShowAlert } from "../../../Contexts/CustomAlertContext";
 
 export default function AddUpdateProduct({
+  open,
   handleCloseModal,
   selectedProduct,
   productsInfo,
 }) {
+  const [animate, setAnimate] = useState(false);
   const [newProductData, setNewProductData] = useState(selectedProduct);
   const { setAlert } = useShowAlert();
   const { addProduct, updateProduct } = productsInfo;
+  const [isloading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    if (open) {
+      setTimeout(() => {
+        setAnimate(true);
+      }, 10);
+    } else {
+      setAnimate(false);
+    }
+  }, [open]);
+
+  function handleConfirm(alertMessage, callback) {
+    setIsLoading(true);
+    setTimeout(() => {
+      callback(newProductData);
+      handleCloseModal();
+      setAlert(alertMessage);
+      setIsLoading(false);
+    }, 2000);
+  }
 
   const handleAddProdcut = () => {
-    console.log(newProductData);
-    addProduct(newProductData);
-    handleCloseModal();
-    setAlert("Product Added Successfully");
+    handleConfirm("Product Added Successfully", addProduct);
   };
 
   const handleUpdateProduct = () => {
-    handleCloseModal();
-    setAlert("Product Updated Successfully");
-    updateProduct(newProductData);
+    handleConfirm("Product Updated Successfully", updateProduct);
   };
 
   const handleInputChange = (e) => {
@@ -29,7 +47,6 @@ export default function AddUpdateProduct({
   };
 
   const isAdd = !selectedProduct.id;
-  console.log(isAdd);
 
   const dsiabled =
     newProductData.category === "" ||
@@ -40,10 +57,10 @@ export default function AddUpdateProduct({
   return (
     <>
       <div
-        className="modal fade show d-flex bg-dark bg-opacity-50 justify-content-center m-0"
+        className={`add-product modal fade ${animate ? "show" : ""} ${open ? "d-flex" : ""} bg-dark bg-opacity-50 justify-content-center m-0`}
         onClick={handleCloseModal}
       >
-        <div className=" modal-dialog-centered" style={{ width: "500px" }}>
+        <div className="modal-dialog" style={{ width: "500px" }}>
           <div
             className="modal-content"
             onClick={(e) => {
@@ -153,7 +170,11 @@ export default function AddUpdateProduct({
                 onClick={!!isAdd ? handleAddProdcut : handleUpdateProduct}
                 disabled={dsiabled}
               >
-                {!!isAdd ? "Add Product" : "Save Changes"}
+                {isloading
+                  ? "Loading..."
+                  : !!isAdd
+                    ? "Add Product"
+                    : "Save Changes"}
               </button>
             </div>
           </div>

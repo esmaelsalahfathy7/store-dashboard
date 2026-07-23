@@ -6,10 +6,11 @@ import { useAuth } from "../../Contexts/AuthContext";
 
 export default function LogInPage() {
   const [user, setUser] = useState({
-    email: "ismaelsalah56@gmail.com",
+    email: "ismaelsalah5666@gmail.com",
     password: "123321123",
     firstName: "Esmael",
-    lasttName: "Salah",
+    lastName: "Salah",
+    jobTitle: "Software Engineer",
   });
   const { LogIn, isLogged } = useAuth();
   const navigate = useNavigate();
@@ -34,7 +35,7 @@ export default function LogInPage() {
       return;
     } else {
       if (
-        user.email === "ismaelsalah56@gmail.com" &&
+        user.email === "ismaelsalah5666@gmail.com" &&
         user.password === "123321123"
       ) {
         alert("Logged in successfully!");

@@ -17,3 +17,14 @@
   border-color: rgb(199 196 215 / 1) !important
 ;
 }
+
+.products-page .add-product.fade .modal-dialog {
+  transition: all 0.1s ease-in-out;
+  transform: scale(0.9);
+  opacity: 0;
+}
+
+.products-page .add-product.fade.show .modal-dialog {
+  opacity: 1;
+  transform: scale(1);
+}

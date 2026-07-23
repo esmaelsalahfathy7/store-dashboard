@@ -11,6 +11,10 @@ export default function SalesPage() {
 
   const salesOrderPerPage = 4;
 
+  function handlePageChange(pageNumber) {
+    setCurrentPage(pageNumber);
+  }
+
   return (
     <>
       <EditShowSalesOrderDataProvider>
@@ -79,6 +83,7 @@ export default function SalesPage() {
                 <tbody className="bg-white">
                   <SalesOrderList
                     pageNumber={currentPage}
+                    onPageChange={handlePageChange}
                     salesOrders={salesOrders}
                     deleteSalesOrder={deleteSalesOrder}
                   />

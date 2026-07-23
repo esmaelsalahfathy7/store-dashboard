@@ -2,6 +2,7 @@ import React from "react";
 import pic from "../../../pic.jpg";
 
 export default function UserBasicInfo() {
+  const userDataInfo = JSON.parse(localStorage.getItem("user"));
   return (
     <div className="d-flex flex-column align-items-center justify-content-center border rounded-3 p-3 bg-white gap-3 ">
       <div className="position-relative">
@@ -15,11 +16,13 @@ export default function UserBasicInfo() {
             className=" rounded-circle w-100 h-100 object-fit-cover"
           />
         </div>
-        <i class="bi bi-camera custom-flex-center custom-bg-primary position-absolute bottom-0 end-0 p-2 rounded-4 "></i>
+        <i className="bi bi-camera custom-flex-center custom-bg-primary position-absolute bottom-0 end-0 p-2 rounded-4 "></i>
       </div>
       <div className="d-flex flex-column text-center">
-        <h2>Marcus Vance</h2>
-        <span>Store Manager • Main Branch</span>
+        <h2>
+          {userDataInfo.firstName} {userDataInfo.lastName}
+        </h2>
+        <span>{userDataInfo.jobTitle}</span>
       </div>
       <div
         className="px-3 py-1 custom-text-primary bg-primary bg-opacity-25 rounded-pill"
@@ -33,8 +36,8 @@ export default function UserBasicInfo() {
       >
         <span>Email Address</span>
         <div className="d-flex gap-3">
-          <i class="bi bi-envelope custom-text-primary"></i>{" "}
-          <p className="m-0">marcus.vance@voltmanage.io</p>
+          <i className="bi bi-envelope custom-text-primary"></i>{" "}
+          <p className="m-0">{userDataInfo.email}</p>
         </div>
       </div>
       <div
@@ -43,7 +46,7 @@ export default function UserBasicInfo() {
       >
         <span>Member Since</span>
         <div className="d-flex gap-3">
-          <i class="bi bi-calendar custom-text-primary"></i>
+          <i className="bi bi-calendar custom-text-primary"></i>
           <p className="m-0">January 12, 2023</p>
         </div>
       </div>

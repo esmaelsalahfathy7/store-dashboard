@@ -7,7 +7,6 @@ export default function CustomPagination({
   contentNumber,
 }) {
   const pages = Math.ceil(contentNumber / rowsPerPage);
-
   const remainingProducts = contentNumber - (currPage - 1) * rowsPerPage;
 
   let lastProductInCurrentPage = currPage * rowsPerPage;
@@ -68,7 +67,22 @@ export default function CustomPagination({
               <span className="page-link">&laquo;</span>
             </li>
 
-            {list}
+            {list.length > 0 ? (
+              list
+            ) : (
+              <li
+                className="page-item custome"
+                style={{ cursor: "pointer" }}
+                data-page={1}
+                onClick={handlePageChange}
+              >
+                <span
+                  className={`page-link border-0 rounded-1  ${currPage === 1 ? "active" : ""}`}
+                >
+                  1
+                </span>
+              </li>
+            )}
             <li
               className={`page-item ${currPage === pages ? "disabled" : ""}`}
               onClick={handleNextBtn}

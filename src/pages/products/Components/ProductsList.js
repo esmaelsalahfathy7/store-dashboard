@@ -3,6 +3,7 @@ import ProductInfo from "./ProductInfo";
 
 export default function ProductsList({
   pageNumber = 1,
+  onPageChange,
   productsPerPage,
   productsInfo,
   handleEditProduct,
@@ -24,6 +25,10 @@ export default function ProductsList({
     (pageNumber - 1) * productsPerPage,
     productsPerPage * pageNumber,
   );
+  if (pageNumber > 1 && page.length === 0) {
+    onPageChange(--pageNumber);
+  }
+
   return (
     <>
       <tbody>

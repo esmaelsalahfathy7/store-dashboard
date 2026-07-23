@@ -1,19 +1,20 @@
 import React from "react";
 import { useState } from "react";
+import "./ProductsPage.css";
 import AddUpdateProduct from "./Components/AddUpdateProduct";
 import ProductsList from "./Components/ProductsList";
 import OrderMenu from "./Components/OrderMenu";
-import "./ProductsPage.css";
 import CustomPagination from "../../Components/CustomPagination";
 import useProductsData from "./hooks/useProductsData";
 
 export default function ProductsPage() {
+  const productsPerPage = 4;
   const productsInfo = useProductsData();
+  const [order, setOrder] = useState([]);
 
   const [showAddProduct, setShowAddProduct] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const [order, setOrder] = useState([]);
 
   function handleAddProductToOrder(product, productQuantity) {
     const existProduct = order.reduce((prev, curr) => {
@@ -40,6 +41,7 @@ export default function ProductsPage() {
       setOrder([...order, product]);
     }
   }
+
   function handleRemoveProductFromOrder(product) {
     setOrder(
       order.filter((curr) => {
@@ -52,9 +54,6 @@ export default function ProductsPage() {
     setOrder([]);
   }
 
-  const numberOfProducts = productsInfo.products.length;
-
-  const productsPerPage = 6;
   const handleCloseAddUpdateProduct = () => {
     setShowAddProduct(false);
   };
@@ -79,9 +78,13 @@ export default function ProductsPage() {
     console.log("Filteration will be here");
   };
 
+  const handlepageChange = (newPage) => {
+    setCurrentPage(newPage);
+  };
+
   return (
     <div className="products-page row g-3 h-100 m-0">
-      <div className="m-0 d-flex flex-column col-sm-12 col-md-9 gap-2">
+      <div className="m-0 d-flex flex-column col-sm-12 col-lg-9 gap-2">
         <div className="head d-flex justify-content-between flex-column flex-md-row ">
           <div>
             <h1 className=" fw-bold">Products</h1>
@@ -106,8 +109,8 @@ export default function ProductsPage() {
             </button>
           </div>
         </div>
-        <div className="products-list d-flex flex-grow-1 flex-column justify-content-between">
-          <div className="table-responsive border content rounded-4 bg-white ">
+        <div className="products-list d-flex flex-grow-1 flex-column justify-content-between gap-3">
+          <div className="table-responsive border h-100  content rounded-4 bg-white ">
             <table className="table table-hover m-0 align-middle ">
               <thead className="align-middle text-center">
                 <tr>
@@ -126,6 +129,7 @@ export default function ProductsPage() {
                   pageNumber={currentPage}
                   productsPerPage={productsPerPage}
                   productsInfo={productsInfo}
+                  onPageChange={handlepageChange}
                   handleEditProduct={handleEditProduct}
                   handleAddProductToOrder={handleAddProductToOrder}
                 />
@@ -137,13 +141,14 @@ export default function ProductsPage() {
               handlepageChange={setCurrentPage}
               currPage={currentPage}
               rowsPerPage={productsPerPage}
-              contentNumber={numberOfProducts}
+              contentNumber={productsInfo.products.length}
             />
           </>
         </div>
       </div>
       <>
         <OrderMenu
+          products={productsInfo.products}
           order={order}
           onRemoveProduct={handleRemoveProductFromOrder}
           clearOrder={handleClearOrder}
@@ -151,6 +156,7 @@ export default function ProductsPage() {
       </>
       {showAddProduct ? (
         <AddUpdateProduct
+          open={showAddProduct}
           handleCloseModal={handleCloseAddUpdateProduct}
           productsInfo={productsInfo}
           selectedProduct={selectedProduct}

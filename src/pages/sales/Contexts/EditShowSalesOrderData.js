@@ -28,7 +28,7 @@ export default function EditShowSalesOrderDataProvider({ children }) {
       }, 10);
     }
   }, [open]);
-  
+
   let productsOfOrder;
   if (open) {
     productsOfOrder = salesOrder?.products.map((curr) => {
@@ -117,12 +117,16 @@ export default function EditShowSalesOrderDataProvider({ children }) {
                 <div className="row">
                   <div className="col">
                     <span>User</span>
-                    <h5>{salesOrder.user}</h5>
-                    <p>alex.j@example.com</p>
+                    <h5>
+                      {salesOrder.user.firstName +
+                        " " +
+                        salesOrder.user.lastName}
+                    </h5>
+                    <p>{salesOrder.user.email}</p>
                   </div>
                   <div className="col">
                     <span>Transaction Date</span>
-                    <h5>{salesOrder.update}</h5>
+                    <h5>{salesOrder.date}</h5>
                   </div>
                 </div>
                 <div className="row my-2">

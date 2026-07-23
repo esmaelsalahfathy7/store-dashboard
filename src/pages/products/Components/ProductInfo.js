@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { useConfirmDelete } from "../../../Contexts/ConfirmDelete";
 
 export default function ProductInfo({
   productsInfo,
@@ -7,9 +8,12 @@ export default function ProductInfo({
   handleEditProduct,
   handleAddProductToOrder,
 }) {
+  const { handleShowDeleteConfirm } = useConfirmDelete();
   const [productQuantity, setproductQuantity] = useState(0);
   const handleDeleteProduct = () => {
-    productsInfo.deleteProduct(product.id);
+    handleShowDeleteConfirm(() => {
+      productsInfo.deleteProduct(product.id);
+    });
   };
 
   // const handleAddProductToOrder = () => {
@@ -70,8 +74,9 @@ export default function ProductInfo({
               </button>
               <input
                 type="text"
+                id={`productStock-${product.id}`}
                 className=" text-center border-0  form-control"
-                value={productQuantity}
+                value={product.stock === 0 ? 0 : productQuantity}
                 onChange={(e) => {
                   const value = e.currentTarget.value;
                   setproductQuantity(
@@ -127,7 +132,7 @@ export default function ProductInfo({
                   quantity: productQuantity,
                 });
               }}
-              disabled={productQuantity === 0}
+              disabled={productQuantity === 0 || product.stock === 0}
             >
               <i className="bi bi-cart3 me-2"></i>Add
             </button>

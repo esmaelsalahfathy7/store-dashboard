@@ -9,6 +9,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import AuthProvider from "./Contexts/AuthContext";
 import App from "./App";
 import { AllCommunityModule, ModuleRegistry } from "ag-charts-community";
+import ConfirmDeleteProvider from "./Contexts/ConfirmDelete";
 
 // Enable all Community features
 
@@ -21,13 +22,15 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <CustomAlertProvider>
-      <HashRouter>
-        <AuthProvider>
-          <SalesOrdersProvider>
-            <App />
-          </SalesOrdersProvider>
-        </AuthProvider>
-      </HashRouter>
+      <ConfirmDeleteProvider>
+        <HashRouter>
+          <AuthProvider>
+            <SalesOrdersProvider>
+              <App />
+            </SalesOrdersProvider>
+          </AuthProvider>
+        </HashRouter>
+      </ConfirmDeleteProvider>
     </CustomAlertProvider>
   </React.StrictMode>,
 );

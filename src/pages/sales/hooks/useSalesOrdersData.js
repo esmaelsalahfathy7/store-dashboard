@@ -1,48 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function useSalesOrdersData() {
-  const sales = [
-    {
-      id: 1,
-      date: Date.now(),
-      user: "Esmael Salah",
-      items: 3,
-      totalPrice: 9250,
-      status: "complete",
-      products: [],
-    },
-    {
-      id: 2,
-      date: Date.now(),
-      user: "Esmael Salah",
-      items: 6,
-      totalPrice: 2250,
-      status: "complete",
-      products: [],
-    },
-    {
-      id: 3,
-      date: Date.now(),
-      user: "Esmael Salah",
-      items: 1,
-      totalPrice: 6250,
-      status: "complete",
-      products: [],
-    },
-    {
-      id: 4,
-      date: Date.now(),
-      user: "Esmael Salah",
-      items: 9,
-      totalPrice: 1250,
-      status: "complete",
-      products: [],
-    },
-  ];
+  let sales = [];
+  if (localStorage.getItem("sales")) {
+    sales = JSON.parse(localStorage.getItem("sales"));
+  }
   const [salesOrders, setSalesOrder] = useState(sales);
 
+  useEffect(() => {
+    localStorage.setItem("sales", JSON.stringify(salesOrders));
+  }, [salesOrders]);
   function addSalesOrder(newSalesOrder) {
-
     setSalesOrder([...salesOrders, newSalesOrder]);
   }
   function deleteSalesOrder(salesOrderId) {

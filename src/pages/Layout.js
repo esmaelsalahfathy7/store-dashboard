@@ -6,7 +6,7 @@ import "./Layout.css";
 
 export default function LayoutPage() {
   return (
-    <div className="layout d-flex vh-100">
+    <div className="layout d-flex vh-100 mw-100 overflow-hidden">
       <div
         className="d-none d-md-block position-sticky top-0 left-0"
         style={{ width: "260px", height: "100vh" }}

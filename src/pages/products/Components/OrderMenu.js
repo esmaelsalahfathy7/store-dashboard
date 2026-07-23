@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSalesOrders } from "../../sales/Contexts/SalesOrdersContext";
 
-export default function OrderMenu({ order, onRemoveProduct, clearOrder }) {
+export default function OrderMenu({
+  products,
+  order,
+  onRemoveProduct,
+  clearOrder,
+}) {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const [isLoading, setIsLoading] = useState(false);
   const { addSalesOrder } = useSalesOrders();
 
   let totalPrice = 0;
@@ -19,7 +26,7 @@ export default function OrderMenu({ order, onRemoveProduct, clearOrder }) {
         </div>
         <div className="d-flex justify-content-between align-items-center">
           <span className="text-black-50">
-            {`${prod.quantity} * $${prod.price.toFixed(2)}`}
+            {`${prod.quantity} * $${(+prod.price).toFixed(2)}`}
           </span>
           <button
             type="button"
@@ -40,25 +47,32 @@ export default function OrderMenu({ order, onRemoveProduct, clearOrder }) {
   const totalPriceAfterTax = totalPrice - tax;
 
   const handleConfirmOrder = () => {
-    clearOrder();
-    addSalesOrder({
-      id: 5543543,
-      date: Date.now(),
-      user: "esmeal",
-      items: order.length,
-      totalPrice: totalPrice,
-      status: "complete",
-      products: order,
-    });
-    console.log(
-      "Confirm Order Will Be Here, And Total Price Is: " + totalPriceAfterTax,
-    );
+    setIsLoading(true);
+    setTimeout(() => {
+      clearOrder();
+      addSalesOrder({
+        id: Date.now(),
+        date: new Date().toISOString().split("T")[0],
+        user: user,
+        items: order.length,
+        totalPrice: totalPrice,
+        status: "complete",
+        products: order,
+      });
+      order.forEach((product) => {
+        const productInfo = products.find((p) => p.id === product.id);
+        if (productInfo) {
+          productInfo.stock -= product.quantity;
+        }
+      });
+      setIsLoading(false);
+    }, 2000);
   };
 
   return (
     <>
       {/* Order Component */}
-      <div className="card col-sm-12 col-md-3 m-0 mh-100">
+      <div className="card col-sm-12 col-lg-3 m-0 mh-100">
         {/* Order Header */}
         <div className="card-header d-flex justify-content-between align-items-center bg-white">
           <h5>
@@ -96,7 +110,7 @@ export default function OrderMenu({ order, onRemoveProduct, clearOrder }) {
           <div className="d-flex justify-content-between align-items-center fs-6">
             <span>Total</span>
             <span className="custom-text-primary fs-5 fw-bold">
-              ${(totalPrice - totalPrice * 0.08).toFixed(2)}
+              ${totalPriceAfterTax.toFixed(2)}
             </span>
           </div>
           <button
@@ -105,7 +119,8 @@ export default function OrderMenu({ order, onRemoveProduct, clearOrder }) {
             onClick={handleConfirmOrder}
             disabled={orderList.length === 0}
           >
-            <i className="bi bi-cart3"></i> Confirm Order
+            <i className="bi bi-cart3"></i>
+            {isLoading ? "Loading..." : " Confirm Order"}
           </button>
         </div>
       </div>

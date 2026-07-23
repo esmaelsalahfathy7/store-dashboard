@@ -1,11 +1,13 @@
 import React from "react";
 import { useEditShowSalesOrder } from "../Contexts/EditShowSalesOrderData";
-
+import { useConfirmDelete } from "../../../Contexts/ConfirmDelete";
 export default function SalesOrderList({
   pageNumber = 1,
+  onPageChange,
   salesOrders,
   deleteSalesOrder,
 }) {
+  const { handleShowDeleteConfirm } = useConfirmDelete();
   const { handleShowForm } = useEditShowSalesOrder();
   const salesOrdersPerPage = 4;
   const data = salesOrders.map((salesOrder) => {
@@ -18,14 +20,17 @@ export default function SalesOrderList({
       handleShowForm(salesOrder, true);
     };
     const handleDeleteSalesOrderData = () => {
-      console.log("Delete Sales Order Data:", salesOrder.id);
-      deleteSalesOrder(salesOrder.id);
+      handleShowDeleteConfirm(() => {
+        deleteSalesOrder(salesOrder.id);
+      });
     };
     return (
       <tr key={salesOrder.id}>
         <td className="p-3 custom-text-primary fw-medium">{salesOrder.id}</td>
         <td>{salesOrder.date} PM</td>
-        <td className="fw-medium">{salesOrder.user}</td>
+        <td className="fw-medium">
+          {salesOrder.user.firstName + " " + salesOrder.user.lastName}
+        </td>
         <td>{salesOrder.items} items</td>
         <td className="fw-semibold">${salesOrder.totalPrice}</td>
         <td>
@@ -66,9 +71,12 @@ export default function SalesOrderList({
     (pageNumber - 1) * salesOrdersPerPage,
     salesOrdersPerPage * pageNumber,
   );
+  if (filteredData.length === 0 && pageNumber > 1) {
+    onPageChange(pageNumber - 1);
+  }
   return (
     <>
-      {filteredData.length === 0 ? (
+      {data.length === 0 ? (
         <tr>
           <td className="opacity-100 text-center" colSpan={7}>
             "No Data To Show"

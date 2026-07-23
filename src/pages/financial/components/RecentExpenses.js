@@ -1,6 +1,7 @@
 import React from "react";
+import ExpensesList from "./ExpensesList";
 
-export default function RecentExpenses() {
+export default function RecentExpenses({ expenses }) {
   return (
     <>
       <div className="all-expenses col d-flex w-100 flex-column border rounded-4 overflow-hidden p-0">
@@ -22,7 +23,7 @@ export default function RecentExpenses() {
           </div>
         </div>
         <div className="table-responsive bg-white w-100 flex-grow-1 ">
-          <table className="table table-hover m-0 align-middle h-100">
+          <table className="table table-hover m-0 align-middle">
             <thead className="align-middle ">
               <tr>
                 <th scope="col" className="ps-3">
@@ -35,84 +36,7 @@ export default function RecentExpenses() {
               </tr>
             </thead>
             <tbody className="bg-white">
-              <tr>
-                <th scope="col" className="ps-3">
-                  1
-                </th>
-                <td>Wire Supply Co. Delivery</td>
-                <td>
-                  <span className="bg-dark-subtle rounded-2 px-2 py-1">
-                    Logistics
-                  </span>
-                </td>
-                <td className="cost">-$1,250.00</td>
-                <td>Oct 24, 2023</td>
-              </tr>
-              <tr>
-                <th scope="col" className="ps-3">
-                  2
-                </th>
-                <td>Wire Supply Co. Delivery</td>
-                <td>
-                  <span className="bg-dark-subtle rounded-2 px-2 py-1">
-                    Logistics
-                  </span>
-                </td>
-                <td className="cost">-$1,250.00</td>
-                <td>Oct 24, 2023</td>
-              </tr>
-              <tr>
-                <th scope="col" className="ps-3">
-                  3
-                </th>
-                <td>Wire Supply Co. Delivery</td>
-                <td>
-                  <span className="bg-dark-subtle rounded-2 px-2 py-1">
-                    Logistics
-                  </span>
-                </td>
-                <td className="cost">-$1,250.00</td>
-                <td>Oct 24, 2023</td>
-              </tr>
-              <tr>
-                <th scope="col" className="ps-3">
-                  1
-                </th>
-                <td>Wire Supply Co. Delivery</td>
-                <td>
-                  <span className="bg-dark-subtle rounded-2 px-2 py-1">
-                    Logistics
-                  </span>
-                </td>
-                <td className="cost">-$1,250.00</td>
-                <td>Oct 24, 2023</td>
-              </tr>
-              <tr>
-                <th scope="col" className="ps-3">
-                  2
-                </th>
-                <td>Wire Supply Co. Delivery</td>
-                <td>
-                  <span className="bg-dark-subtle rounded-2 px-2 py-1">
-                    Logistics
-                  </span>
-                </td>
-                <td className="cost">-$1,250.00</td>
-                <td>Oct 24, 2023</td>
-              </tr>
-              <tr>
-                <th scope="col" className="ps-3">
-                  3
-                </th>
-                <td>Wire Supply Co. Delivery</td>
-                <td>
-                  <span className="bg-dark-subtle rounded-2 px-2 py-1">
-                    Logistics
-                  </span>
-                </td>
-                <td className="cost">-$1,250.00</td>
-                <td>Oct 24, 2023</td>
-              </tr>
+              <ExpensesList expenses={expenses} />
             </tbody>
           </table>
         </div>
